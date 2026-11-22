@@ -1,0 +1,38 @@
+# Base configuration shared by all experiments.
+# Individual model configs (baseline_tfidf.yaml, etc.) are deep-merged on top of this.
+
+project_name: bilingual-political-attitude-classification
+seed: 42
+
+paths:
+  raw_dir: data/raw
+  synthetic_dir: data/synthetic
+  processed_dir: data/processed
+  artifacts_dir: artifacts
+
+# Synthetic corpus generation
+data:
+  source: synthetic          # one of: synthetic | csv | huggingface
+  languages: [en, bn]        # English + Bangla
+  n_samples: 6000            # total examples generated across languages/classes
+  class_balance: balanced    # balanced | natural
+  labels: [negative, neutral, positive]
+  # Difficulty knobs — keep the task realistically hard (see report Sec. III.C).
+  sarcasm_rate: 0.12         # negative posts phrased with positive words
+  negation_rate: 0.18        # polarity-flipping negation
+  hedge_rate: 0.25           # softened / hedged sentiment
+  contrast_rate: 0.22        # mixed-polarity contrastive posts
+  label_noise: 0.06          # annotator-disagreement label corruption
+  # Metadata columns used by the fairness analysis
+  parties: [PartyA, PartyB, PartyC, Independent]
+  topics: [economy, healthcare, immigration, climate, security, education]
+
+split:
+  test_size: 0.15
+  val_size: 0.15
+  stratify_by: label
+  shuffle: true
+
+logging:
+  level: INFO
+  log_dir: artifacts/logs

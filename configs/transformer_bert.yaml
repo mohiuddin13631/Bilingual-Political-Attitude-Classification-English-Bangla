@@ -1,0 +1,25 @@
+# Fine-tuned transformer classifier (HuggingFace).
+# Inherits configs/base.yaml.
+#
+# Model choice:
+#   - distilbert-base-multilingual-cased  -> fast, covers EN + BN, good default for demo
+#   - xlm-roberta-base                     -> stronger multilingual, heavier
+# Swap `pretrained_name` to scale up on GPU hardware.
+
+experiment_name: transformer_bert
+model:
+  type: transformer
+  pretrained_name: distilbert-base-multilingual-cased
+  max_len: 64
+  dropout: 0.2
+
+train:
+  epochs: 3
+  batch_size: 16
+  lr: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  grad_clip: 1.0
+  early_stopping_patience: 2
+  fp16: false             # set true on a CUDA GPU
+  device: auto

@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Bilingual Political Attitude Classification (English & Bangla)"
+abstract: >-
+  A modular, reproducible research codebase for multilingual (English + Bangla)
+  political attitude classification using negative, neutral, and positive
+  text sentiment labels, comparing a TF-IDF linear
+  baseline, a BiLSTM with attention, and a fine-tuned multilingual transformer,
+  with bias/fairness auditing, explainability (LIME/SHAP/attention), and a
+  FastAPI + Streamlit demo.
+authors:
+  - family-names: "Scube"
+    given-names: "Team"
+keywords:
+  - political attitude classification
+  - bilingual
+  - sentiment analysis
+  - natural language processing
+  - political NLP
+  - multilingual
+  - Bangla
+  - BERT
+  - BiLSTM
+  - explainable AI
+  - algorithmic fairness
+version: 0.1.0
+date-released: "2026-09-11"
+license: MIT

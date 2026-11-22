@@ -1,0 +1,23 @@
+# TF-IDF + linear classifier baseline.
+# Inherits configs/base.yaml.
+
+experiment_name: baseline_tfidf
+model:
+  type: tfidf_linear
+  classifier: logistic_regression   # logistic_regression | linear_svm
+  tfidf:
+    ngram_range: [1, 2]
+    max_features: 50000
+    min_df: 2
+    sublinear_tf: true
+  logistic_regression:
+    C: 4.0
+    max_iter: 2000
+    class_weight: balanced
+  linear_svm:
+    C: 1.0
+    class_weight: balanced
+
+train:
+  # Baselines are fit in a single call; kept here for a uniform interface.
+  calibrate_probabilities: true      # needed for ROC-AUC on the SVM

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#4a5568"/>
+    </marker>
+    <style>
+      .box { fill:#ffffff; stroke:#2d3748; stroke-width:1.5; rx:8; }
+      .title { font-size:15px; font-weight:700; fill:#1a202c; }
+      .sub { font-size:11.5px; fill:#4a5568; }
+      .stage { font-size:12px; font-weight:700; fill:#2b6cb0; letter-spacing:0.5px; }
+      .edge { stroke:#4a5568; stroke-width:1.6; fill:none; marker-end:url(#arrow); }
+      .band { fill:#f7fafc; stroke:#e2e8f0; stroke-width:1; rx:10; }
+    </style>
+  </defs>
+
+  <text x="480" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1a202c">
+    Bilingual Political Attitude Classification (English &amp; Bangla)
+  </text>
+  <text x="480" y="50" text-anchor="middle" class="sub">System architecture &#183; PyTorch &#183; reproducible, config-driven pipeline</text>
+
+  <!-- DATA -->
+  <text x="60" y="90" class="stage">1 · DATA</text>
+  <rect class="box" x="40" y="98" width="220" height="86" rx="8"/>
+  <text x="56" y="122" class="title">Corpus</text>
+  <text x="56" y="142" class="sub">Synthetic generator (EN+BN)</text>
+  <text x="56" y="158" class="sub">negation · sarcasm · contrast</text>
+  <text x="56" y="174" class="sub">Real loaders: CSV / HuggingFace</text>
+
+  <!-- PREPROCESS -->
+  <text x="300" y="90" class="stage">2 · PREPROCESS</text>
+  <rect class="box" x="285" y="98" width="210" height="86" rx="8"/>
+  <text x="301" y="122" class="title">Pipeline</text>
+  <text x="301" y="142" class="sub">clean · tokenize (EN/BN)</text>
+  <text x="301" y="158" class="sub">negation scoping (_NEG)</text>
+  <text x="301" y="174" class="sub">linear vs neural presets</text>
+
+  <!-- MODELS band -->
+  <text x="540" y="90" class="stage">3 · MODELS</text>
+  <rect class="band" x="520" y="98" width="400" height="180"/>
+  <rect class="box" x="536" y="112" width="368" height="46" rx="8"/>
+  <text x="550" y="131" class="title" font-size="13">Baseline</text>
+  <text x="550" y="149" class="sub">TF-IDF + Logistic Regression / Linear SVM</text>
+  <rect class="box" x="536" y="166" width="368" height="46" rx="8"/>
+  <text x="550" y="185" class="title" font-size="13">BiLSTM + Attention</text>
+  <text x="550" y="203" class="sub">embedding · BiLSTM · additive attention</text>
+  <rect class="box" x="536" y="220" width="368" height="46" rx="8"/>
+  <text x="550" y="239" class="title" font-size="13">Transformer (fine-tuned)</text>
+  <text x="550" y="257" class="sub">DistilBERT-multilingual / XLM-R</text>
+
+  <!-- shared interface -->
+  <rect class="box" x="360" y="320" width="240" height="60" rx="8" fill="#ebf8ff"/>
+  <text x="378" y="344" class="title" font-size="13">SentimentModel interface</text>
+  <text x="378" y="364" class="sub">fit · predict_proba · save/load</text>
+
+  <!-- TRAINING -->
+  <text x="60" y="330" class="stage">4 · TRAINING</text>
+  <rect class="box" x="40" y="338" width="250" height="86" rx="8"/>
+  <text x="56" y="362" class="title">Trainer</text>
+  <text x="56" y="382" class="sub">seed control · logged configs</text>
+  <text x="56" y="398" class="sub">early stopping · class weights</text>
+  <text x="56" y="414" class="sub">artifacts/&lt;experiment&gt;/</text>
+
+  <!-- EVALUATION -->
+  <text x="60" y="470" class="stage">5 · EVALUATION &amp; RESPONSIBLE-AI</text>
+  <rect class="box" x="40" y="478" width="280" height="110" rx="8"/>
+  <text x="56" y="502" class="title">Metrics &amp; Analysis</text>
+  <text x="56" y="522" class="sub">acc · F1 · P/R · ROC-AUC · confusion</text>
+  <text x="56" y="538" class="sub">error analysis (by language)</text>
+  <text x="56" y="554" class="sub">fairness: party/topic/lang parity</text>
+  <text x="56" y="570" class="sub">explainability: attention · LIME · SHAP</text>
+
+  <!-- SERVING -->
+  <text x="620" y="470" class="stage">6 · SERVING</text>
+  <rect class="box" x="600" y="478" width="320" height="110" rx="8"/>
+  <text x="616" y="502" class="title">Real-time demo</text>
+  <text x="616" y="522" class="sub">FastAPI /predict · /health (Pydantic)</text>
+  <text x="616" y="538" class="sub">Streamlit dashboard: single / batch</text>
+  <text x="616" y="554" class="sub">probability bars · token explanations</text>
+  <text x="616" y="570" class="sub">model-agnostic (loads best available)</text>
+
+  <!-- edges -->
+  <path class="edge" d="M260,141 L283,141"/>
+  <path class="edge" d="M495,141 L534,141"/>
+  <path class="edge" d="M600,240 C640,300 560,300 490,335"/>
+  <path class="edge" d="M360,352 L292,368"/>
+  <path class="edge" d="M165,424 L175,474"/>
+  <path class="edge" d="M320,533 L598,533"/>
+  <path class="edge" d="M480,382 C300,300 300,300 165,336" opacity="0"/>
+</svg>
